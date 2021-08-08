@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 10:36:15 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/01 10:09:30 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/08 16:58:53 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ static int	ft_is_item_int(char *str)
 {
 	int		sign;
 	double	nb;
+	int		has_digit;
 
 	nb = 0;
 	sign = 1;
+	has_digit = 0;
 	if (!*str)
 		return (0);
 	while ((*str >= 9 && *str <= 13) || *str == 32)
@@ -51,12 +53,13 @@ static int	ft_is_item_int(char *str)
 	}
 	while (ft_isdigit(*str))
 	{
+		has_digit = 1;
 		nb = (nb * 10) + (*str - 48);
 		++str;
 	}
 	if (nb * sign > INT_MAX || nb * sign < INT_MIN)
 		return (0);
-	return (1);
+	return (has_digit);
 }
 
 static int	ft_is_item_in_stack(int item, t_stack *stack)
