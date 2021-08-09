@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:25:31 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 17:08:59 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 17:27:04 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,16 @@ void	ft_rotate_before_receive(t_stack **stack, int min, int max, int value)
 		else if (direction == -1 && to_top < min)
 			to_top = min + 1;
 		ft_put_on_top(\
-			ft_get_index(to_top, (*stack)->array, (*stack)->top + 1), *stack);
+			ft_get_index(to_top, (*stack)->array, (*stack)->top + 1), stack);
 	}
 }
+
+/*
+* Tri par insersion : https://fr.wikipedia.org/wiki/Tri_par_insertion
+* ou tri de shell : https://fr.wikipedia.org/wiki/Tri_de_Shell
+* Ou tout connemment "dummysort": on pousse du min au max dans B (ou du max au min dans A), en verifiant a chaque push si ce qui reste dans A est trie pour eviter les pushs en trop
+* et apres si on a B en dest on PA le tout.
+*/
 
 void	ft_insertionsort(t_stack **src, t_stack **dest, int min, int max)
 {
@@ -67,6 +74,7 @@ void	ft_insertionsort(t_stack **src, t_stack **dest, int min, int max)
 	while (!is_sorted(*src, min, max))
 	{
 		// check if a swap can sort the top first
+		value = (*src)->top;
 		ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
 		ft_rotate_before_receive(src, min, max, value);
 		ft_push(ft_get_code('p', (*src)->num), *src, *dest);

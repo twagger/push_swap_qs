@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:59 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 17:09:24 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 17:18:48 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_cleaner(t_stack **a, t_stack **b, char *message, int code)
 int	is_sorted(t_stack *stack, int min, int max)
 {
 	int	i;
-	int size;
+	//int size;
 
 	if (min == -1 && max == -1)
 	{		
