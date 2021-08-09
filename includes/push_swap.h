@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:30 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/08 14:24:14 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 15:33:53 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ typedef struct s_stack
 	int		num;
 }			t_stack;
 
-typedef struct s_chunk
-{
-	int		min[2];
-	int		max[2];
-	int		pvt;
-	int		*sorted;
-	int		s_min;
-	int		s_max;
-}			t_chunk;
-
 typedef struct s_ope
 {
 	int				code;
@@ -50,6 +40,7 @@ void	ft_free_stack(t_stack *stack);
 int		ft_fill_stack(t_stack *stack, char *str);
 void	ft_reverse_stack(t_stack *stack);
 int		is_empty(t_stack *stack);
+int		is_sorted(t_stack *stack);
 int		is_full(t_stack *stack);
 void	push(t_stack *stack, int item);
 int		pop(t_stack *stack);
@@ -69,20 +60,15 @@ void	ft_rev_rotate(const char *code, t_stack *stack1, t_stack *stack2);
 
 void	ft_very_small_stack(t_stack **a);
 void	ft_small_stack(t_stack **src, t_stack **dest);
-int		ft_huge_stack(t_stack **a, t_stack **b);
-int		ft_is_sorted(t_stack *stack);
-int		ft_is_finished(t_stack *a, t_stack *b);
-void	ft_sort_top_in_stack(t_stack **a);
-void	ft_put_index_on_top(int index, t_stack **stack, t_chunk *chunk);
+int		ft_big_stack(t_stack **a, t_stack **b);
+void	ft_put_on_top(int index, t_stack **stack);
 char	*ft_get_code(char ope, int num);
-int		ft_get_index(int value, t_stack *stack);
+int		ft_get_index(int value, int *array, int size);
 void	ft_get_sorted_from_stack(t_stack a, int **sorted);
-
-void	ft_rotate_chunk(int stack, t_chunk *chunk, int top);
-void	ft_rev_rotate_chunk(int stack, t_chunk *chunk, int top);
-void	ft_push_chunk(int stack, t_chunk *chunk, int top);
-void	ft_reassemble_chunk(t_stack **stack, t_chunk *chunk);
-void	ft_split_chunk(t_stack **src, t_stack **dest, t_chunk *chunk);
+void	ft_split_chunk(t_stack **src, t_stack **dest, int min, int max);
+void	ft_swapsort(t_stack **src, t_stack **dest, int min, int max);
+void	ft_onesort(t_stack **src, t_stack **dest, int one);
+void	ft_insertionsort(t_stack **src, t_stack **dest, int min, int max);
 
 void	ft_print_stack(t_stack **stack);
 

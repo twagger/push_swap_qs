@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:59 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/02 09:43:27 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 15:03:12 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,17 @@ int	ft_cleaner(t_stack **a, t_stack **b, char *message, int code)
 		ft_putchar_fd('\n', 2);
 	}
 	return (code);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	int	i;
+
+	i = -1;
+	while (++i < stack->top)
+	{
+		if (stack->array[i] < stack->array[i + 1])
+			return (0);
+	}
+	return (1);
 }

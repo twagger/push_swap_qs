@@ -2,14 +2,13 @@ SRCS			= srcs/push_swap.c \
 			  	  srcs/parser.c \
 				  sorters/very_small_stack.c \
 				  sorters/small_stack.c \
-				  sorters/huge_stack.c \
+				  sorters/big_stack.c \
 				  utils/parser_utils.c \
 			  	  utils/stack_utils_1.c \
 			  	  utils/stack_utils_2.c \
 				  utils/push_swap_utils.c \
-				  utils/sorters_utils_1.c \
-				  utils/sorters_utils_2.c \
-				  utils/chunk_utils.c 
+				  utils/sorter_utils_1.c \
+				  utils/sorter_utils_2.c
 
 BSRCS			= srcs/checker.c \
 				  srcs/parser.c \
