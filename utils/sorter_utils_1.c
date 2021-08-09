@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:08:44 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 15:25:01 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 15:47:46 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,32 +95,23 @@ void	ft_get_sorted_from_stack(t_stack a, int **sorted)
 
 void	ft_split_chunk(t_stack **src, t_stack **dest, int min, int max)
 {
-	int	pivot;
 	int	i;
 	int	j;
-	int	i_pushable;
-	int	j_pushable;
 
 	j = -1;
 	i = (*src)->top + 1;
-	pivot = (min + max) / 2;
 	while (++j <= --i)
 	{
-		i_pushable = (*src)->array[i] < pivot;
-		j_pushable = (*src)->array[j] < pivot;
-		if ((*src)->num == 1)
-		{
-			i_pushable = (*src)->array[i] > pivot;
-			j_pushable = (*src)->array[j] > pivot;
-		}	
-		if (i_pushable && (*src)->array[i] <= max && (*src)->array[i] >= min)
+		if (((*src)->array[i] < (min + max) / 2) != (*src)->num \
+			&& (*src)->array[i] <= max && (*src)->array[i] >= min)
 		{
 			ft_put_on_top(i, src);
 			ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
 			j = -1;
 			i = (*src)->top + 1;
 		}
-		else if (j_pushable && (*src)->array[j] <= max && (*src)->array[j] >= min)
+		else if (((*src)->array[j] < (min + max) / 2) != (*src)->num \
+			&& (*src)->array[j] <= max && (*src)->array[j] >= min)
 		{
 			ft_put_on_top(j, src);
 			ft_push(ft_get_code('p', (*dest)->num), *dest, *src);

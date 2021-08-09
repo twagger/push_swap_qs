@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:44 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 15:32:00 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 15:48:19 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 		ft_swapsort(src, dest, min, max);
 	else if ((*src)->top < 5 && (*src)->num == 0)
 		ft_small_stack(src, dest);
-	else if (max - min < 16)
-		ft_insertionsort(src, dest, min, max);
+	/*else if (max - min < 16)
+		ft_insertionsort(src, dest, min, max);*/
 	else
 	{
 		pivot = (min + max) / 2;
