@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:52 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 15:05:36 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 17:08:26 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_very_small_stack(t_stack **a)
 	int	*mid;
 	int	*bot;
 
-	if ((*a)->capacity < 2 || is_sorted(*a))
+	if ((*a)->capacity < 2 || is_sorted(*a, -1, -1))
 		return ;
 	if ((*a)->capacity == 2)
 		ft_swap("sa", *a, NULL);

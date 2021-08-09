@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:30 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 15:33:53 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 16:57:02 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_free_stack(t_stack *stack);
 int		ft_fill_stack(t_stack *stack, char *str);
 void	ft_reverse_stack(t_stack *stack);
 int		is_empty(t_stack *stack);
-int		is_sorted(t_stack *stack);
+int		is_sorted(t_stack *stack, int min, int max);
 int		is_full(t_stack *stack);
 void	push(t_stack *stack, int item);
 int		pop(t_stack *stack);

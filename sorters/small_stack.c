@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:56 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 15:16:58 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 17:08:16 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	ft_sort_top_in_stack(t_stack **stack)
 	int	i;
 
 	i = -1;
-	if (is_sorted(*stack))
+	if (is_sorted(*stack, -1, -1))
 		return ;
 	while (++i < (*stack)->top)
 	{
@@ -77,7 +77,7 @@ void	ft_small_stack(t_stack **src, t_stack **dest)
 		ft_very_small_stack(src);
 		return ;
 	}
-	if (is_sorted(*src))
+	if (is_sorted(*src, -1, -1))
 		return ;
 	ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
 	if ((*src)->capacity == 5)
