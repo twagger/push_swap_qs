@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:44 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 22:11:29 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 23:02:46 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 {
 	int	pivot;
 
+	//if ((*src)->num == 0 && is_sorted(*src))
+		//return ;
 	if (min >= max)
 		ft_onesort(src, dest, min);
 	else if (max - min < 2)
@@ -38,7 +40,7 @@ static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 	{
 		pivot = (min + max) / 2;
 		ft_partition(src, dest, min, max);
-		if ((*src)->num == 0)
+		if ((*src)->num == 0) // ajouter verif deja trie sur a et b
 		{
 			ft_quicksort(src, dest, pivot + 1, max);
 			ft_quicksort(dest, src, min, pivot);

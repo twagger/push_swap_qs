@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:25:31 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 22:10:25 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/09 23:12:18 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	ft_onesort(t_stack **src, t_stack **dest, int one)
 * ou tri de shell : https://fr.wikipedia.org/wiki/Tri_de_Shell
 * Ou tout connemment "dummysort": on pousse du min au max dans B (ou du max au min dans A), en verifiant a chaque push si ce qui reste dans A est trie pour eviter les pushs en trop
 * et apres si on a B en dest on PA le tout.
+* > revoir un peu le radix sort
+* > voir les doubles listes chainées circulaire (*prev / *next) : https://prezi.com/8gbz6bsvbxw_/push-swap/
+* > voir les bons projets github :
+*    - https://github.com/VBrazhnik/Push_swap 
+*    - https://github.com/rizky/42-push_swap/blob/master/src/ft_push_swap.c
 */
 
 void	ft_stupidsort(t_stack **src, t_stack **dest, int min, int max)
