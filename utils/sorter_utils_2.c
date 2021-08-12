@@ -6,11 +6,42 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:25:31 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 23:12:18 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/10 23:09:54 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_is_chunk_sorted(t_stack *stack, int min, int max)
+{
+	int	i;
+
+	if (stack->num == 0)
+	{
+		if (stack->array[stack->top] != min)
+			return (0);
+		i = 0;
+		while (min + i <= max)
+		{
+			if (stack->array[stack->top - i] != min + i)
+				return (0);
+			++i;
+		}
+	}
+	else
+	{
+		if (stack->array[stack->top] != max)
+			return (0);
+		i = 0;
+		while (max - i >= min)
+		{
+			if (stack->array[stack->top - i] != max - i)
+				return (0);
+			++i;
+		}
+	}
+	return (1);
+}
 
 int	ft_simplify_stack(t_stack **stack)
 {
@@ -69,6 +100,8 @@ void	ft_onesort(t_stack **src, t_stack **dest, int one)
 * > voir les bons projets github :
 *    - https://github.com/VBrazhnik/Push_swap 
 *    - https://github.com/rizky/42-push_swap/blob/master/src/ft_push_swap.c
+*	 - https://github.com/Hamza-nabil/Push_Swap/tree/main/srcs < Tester (très peu de code, assez simple)
+* enlever fsanitize du makefile
 */
 
 void	ft_stupidsort(t_stack **src, t_stack **dest, int min, int max)

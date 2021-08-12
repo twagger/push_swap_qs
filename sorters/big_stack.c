@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:44 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 23:02:46 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/10 22:09:59 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 {
 	int	pivot;
 
-	//if ((*src)->num == 0 && is_sorted(*src))
-		//return ;
+	if (ft_is_chunk_sorted(*src, min, max))
+		return ;
 	if (min >= max)
 		ft_onesort(src, dest, min);
 	else if (max - min < 2)
