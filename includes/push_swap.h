@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:30 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 14:11:52 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 16:09:34 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max);
 void	ft_swapsort(t_stack **src, t_stack **dest, int min, int max);
 void	ft_onesort(t_stack **src, t_stack **dest, int one);
 void	ft_insertionsort(t_stack **src, t_stack **dest, int min, int max);
-int		ft_radixsort(t_stack **a, t_stack **b);
+void	ft_radixsort(t_stack **a, t_stack **b);
 
 void	ft_print_stack(t_stack **stack);
 

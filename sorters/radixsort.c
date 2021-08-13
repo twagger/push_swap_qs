@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:30:41 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 15:02:22 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 16:07:40 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_get_max_bits(t_stack stack)
 	return (res);
 }
 
-int	ft_radixsort(t_stack **a, t_stack **b)
+void	ft_radixsort(t_stack **a, t_stack **b)
 {
 	int	i;
 	int	j;
@@ -54,5 +54,4 @@ int	ft_radixsort(t_stack **a, t_stack **b)
 		while (--push_back)
 			ft_push("pa", *a, *b);
 	}
-	return (0);
 }

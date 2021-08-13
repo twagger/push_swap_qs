@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   small_stack.c                                      :+:      :+:    :+:   */
+/*   5_stacksort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:56 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 13:25:45 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 16:12:14 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_get_i_min(int *arr, int size)
+{
+	int	i;
+	int	min;
+
+	i = -1;
+	min = INT_MAX;
+	while (++i < size)
+	{
+		if (arr[i] < min)
+			min = arr[i];
+	}
+	return (ft_get_index(min, arr, size));
+}
 
 void	ft_sort_stack_before_receive(t_stack **stack, int value)
 {
@@ -65,6 +80,5 @@ void	ft_small_stack(t_stack **a, t_stack **b)
 		ft_sort_stack_before_receive(a, (*b)->array[(*b)->top]);
 		ft_push("pa", *a, *b);
 	}
-	if ((*a)->array[(*a)->top] > (*a)->array[0])
-		ft_rotate("ra", *a, NULL);
+	ft_put_on_top(ft_get_i_min((*a)->array, (*a)->top + 1), a);
 }
