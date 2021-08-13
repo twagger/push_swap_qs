@@ -6,11 +6,15 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:56 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 16:35:45 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 17:09:56 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+* To use only from A
+*/
 
 int	ft_get_i_min(int *arr, int size)
 {
@@ -55,13 +59,13 @@ void	ft_sort_stack_before_receive(t_stack **stack, int value)
 	ft_put_on_top(i_top, stack);
 }
 
-void	ft_small_stack(t_stack **a, t_stack **b)
+void	ft_5_stacksort(t_stack **a, t_stack **b)
 {
 	int	push_back;
 
 	push_back = 0;
 	if ((*a)->top < 3)
-		return (ft_very_small_stack(a));
+		return (ft_3_stacksort(a));
 	if (is_sorted(*a))
 		return ;
 	ft_push("pb", *b, *a);
@@ -73,7 +77,7 @@ void	ft_small_stack(t_stack **a, t_stack **b)
 			ft_push("pb", *b, *a);
 			++push_back;
 		}
-		ft_very_small_stack(a);
+		ft_3_stacksort(a);
 	}
 	while (push_back--)
 	{

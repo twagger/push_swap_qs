@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:39 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 16:36:15 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 16:45:36 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ int	main(int ac, char **av)
 	}
 	printf("\n");
 	*/
-	if ((*a)->capacity < 6)
-		ft_small_stack(a, b);
-	else if ((*a)->capacity >= 6)
-		ft_quicksort(a, b, 0, (*a)->top);
-		//ft_radixsort(a, b);
+	ft_quicksort(a, b, 0, (*a)->top);
 	/*
 	i = (*a)->top;
 	while (i >= 0)

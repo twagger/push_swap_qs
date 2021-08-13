@@ -6,13 +6,17 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:52 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 16:35:48 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 17:09:49 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_very_small_stack(t_stack **a)
+/*
+* To use only from A
+*/
+
+void	ft_3_stacksort(t_stack **a)
 {
 	int	*top;
 	int	*mid;
