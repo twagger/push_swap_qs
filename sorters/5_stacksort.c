@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:56 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 16:12:14 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 16:35:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_sort_stack_before_receive(t_stack **stack, int value)
 	i = -1;
 	min = INT_MAX;
 	max = -1;
-	closer = 4;
+	closer = INT_MAX;
 	while (++i <= (*stack)->top)
 	{
 		if ((*stack)->array[i] > max)
