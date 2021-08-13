@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:56 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 09:46:56 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 13:25:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,53 @@ void	ft_sort_stack_before_receive(t_stack **stack, int value)
 	int	i_top;
 	int	min;
 	int	max;
+	int	closer;
 
 	i = -1;
-	min = 5;
-	max = 0;
+	min = INT_MAX;
+	max = -1;
+	closer = 4;
 	while (++i <= (*stack)->top)
 	{
 		if ((*stack)->array[i] > max)
 			max = (*stack)->array[i];
 		if ((*stack)->array[i] < min)
 			min = (*stack)->array[i];
+		if ((*stack)->array[i] > value && (*stack)->array[i] < closer)
+			closer = (*stack)->array[i];
 	}
 	if (value < min || value > max)
 		i_top = ft_get_index(min, (*stack)->array, (*stack)->top + 1);
 	else
-		i_top = ft_get_index(++value, (*stack)->array, (*stack)->top + 1);
+		i_top = ft_get_index(closer, (*stack)->array, (*stack)->top + 1);
 	ft_put_on_top(i_top, stack);
 }
 
-void	ft_small_stack(t_stack **src, t_stack **dest)
+void	ft_small_stack(t_stack **a, t_stack **b)
 {
-	if ((*src)->top < 3)
-	{
-		ft_very_small_stack(src);
+	int	push_back;
+
+	push_back = 0;
+	if ((*a)->top < 3)
+		return (ft_very_small_stack(a));
+	if (is_sorted(*a))
 		return ;
-	}
-	if (is_sorted(*src))
-		return ;
-	ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
-	if (!is_sorted(*src))
+	ft_push("pb", *b, *a);
+	++push_back;
+	if (!is_sorted(*a))
 	{
-		if ((*src)->capacity == 5)
-			ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
-		ft_very_small_stack(src);
+		if ((*a)->top == 3)
+		{
+			ft_push("pb", *b, *a);
+			++push_back;
+		}
+		ft_very_small_stack(a);
 	}
-	ft_sort_stack_before_receive(src, (*dest)->array[(*dest)->top]);
-	ft_push(ft_get_code('p', (*src)->num), *src, *dest);
-	if (!is_empty(*dest))
+	while (push_back--)
 	{
-		ft_sort_stack_before_receive(src, (*dest)->array[(*dest)->top]);
-		ft_push(ft_get_code('p', (*src)->num), *src, *dest);
+		ft_sort_stack_before_receive(a, (*b)->array[(*b)->top]);
+		ft_push("pa", *a, *b);
 	}
-	ft_put_on_top(ft_get_index(0, (*src)->array, (*src)->top + 1), src);
+	if ((*a)->array[(*a)->top] > (*a)->array[0])
+		ft_rotate("ra", *a, NULL);
 }

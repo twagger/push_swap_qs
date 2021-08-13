@@ -6,12 +6,12 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:39 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 09:36:50 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 15:05:44 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 int	main(int ac, char **av)
 {
 	t_stack			**a;
@@ -27,9 +27,29 @@ int	main(int ac, char **av)
 		return (ft_cleaner(a, b, "Error", ERROR));
 	if (ft_simplify_stack(a) == ERROR)
 		return (ft_cleaner(a, NULL, "Error", ERROR));
+	/* 
+	int i;
+	i = (*a)->top;
+	while (i >= 0)
+	{
+		printf("%i ", (*a)->array[i]);
+		--i;
+	}
+	printf("\n");
+	*/
 	if ((*a)->capacity < 6)
 		ft_small_stack(a, b);
 	else if ((*a)->capacity >= 6)
-		ft_big_stack(a, b);
+		ft_quicksort(a, b, 0, (*a)->top);
+		//ft_radixsort(a, b);
+	/* 
+	i = (*a)->top;
+	while (i >= 0)
+	{
+		printf("%i ", (*a)->array[i]);
+		--i;
+	}
+	printf("\n");
+	*/  
 	return (ft_cleaner(a, b, NULL, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:30 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/10 21:57:57 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 14:11:52 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,18 @@ void	ft_rev_rotate(const char *code, t_stack *stack1, t_stack *stack2);
 int		ft_simplify_stack(t_stack **stack);
 void	ft_very_small_stack(t_stack **a);
 void	ft_small_stack(t_stack **src, t_stack **dest);
-void	ft_big_stack(t_stack **a, t_stack **b);
 void	ft_put_on_top(int index, t_stack **stack);
 char	*ft_get_code(char ope, int num);
 int		ft_get_index(int value, int *array, int size);
 void	ft_get_sorted_from_stack(t_stack a, int **sorted);
 void	ft_split_chunk(t_stack **src, t_stack **dest, int min, int max);
+int		ft_is_chunk_sorted(t_stack *stack, int min, int max);
+
+void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max);
 void	ft_swapsort(t_stack **src, t_stack **dest, int min, int max);
 void	ft_onesort(t_stack **src, t_stack **dest, int one);
-void	ft_stupidsort(t_stack **src, t_stack **dest, int min, int max);
-int		ft_is_chunk_sorted(t_stack *stack, int min, int max);
+void	ft_insertionsort(t_stack **src, t_stack **dest, int min, int max);
+int		ft_radixsort(t_stack **a, t_stack **b);
 
 void	ft_print_stack(t_stack **stack);
 

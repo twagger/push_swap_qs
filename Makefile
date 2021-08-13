@@ -1,8 +1,11 @@
 SRCS			= srcs/push_swap.c \
 			  	  srcs/parser.c \
-				  sorters/very_small_stack.c \
-				  sorters/small_stack.c \
-				  sorters/big_stack.c \
+				  sorters/3_stacksort.c \
+				  sorters/5_stacksort.c \
+				  sorters/quicksort.c \
+				  sorters/radixsort.c \
+				  sorters/insertionsort.c \
+				  sorters/dummysorts.c \
 				  utils/parser_utils.c \
 			  	  utils/stack_utils_1.c \
 			  	  utils/stack_utils_2.c \

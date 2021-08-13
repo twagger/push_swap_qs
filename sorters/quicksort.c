@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_stack.c                                        :+:      :+:    :+:   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:44 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 09:58:16 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 15:07:12 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ static void	ft_alternative_sort(t_stack **src, t_stack **dest, int min, int max)
 		ft_swapsort(src, dest, min, max);
 	else if ((*src)->top < 5 && (*src)->num == 0)
 		ft_small_stack(src, dest);
-	else if (max - min < 20 && (*src)->num == 1)
-		ft_stupidsort(src, dest, min, max);
+	else if ((*src)->top < 30 && (*src)->num == 0)
+		ft_radixsort(src, dest);
+	else if (max - min < 16 && (*src)->num == 1)
+		ft_insertionsort(src, dest, min, max);
 }
 
-static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
+void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 {
 	int	pivot;
 
@@ -42,7 +44,8 @@ static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 		return ;
 	else if (max - min < 2 \
 			|| (max - min < 20 && (*src)->num == 1) \
-			|| ((*src)->top < 5 && (*src)->num == 0))
+			|| ((*src)->top < 5 && (*src)->num == 0)
+			|| ((*src)->top < 30 && (*src)->num == 0))
 		ft_alternative_sort(src, dest, min, max);
 	else
 	{
@@ -59,9 +62,4 @@ static void	ft_quicksort(t_stack **src, t_stack **dest, int min, int max)
 			ft_quicksort(src, dest, min, pivot - 1);
 		}
 	}
-}
-
-void	ft_big_stack(t_stack **a, t_stack **b)
-{
-	ft_quicksort(a, b, 0, (*a)->top);
 }
