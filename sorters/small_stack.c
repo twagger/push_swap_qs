@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:56 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 22:33:38 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 09:46:56 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_sort_stack_before_receive(t_stack **stack, int value)
 {
 	int	i;
 	int	i_top;
-	int min;
+	int	min;
 	int	max;
 
 	i = -1;
@@ -46,12 +46,15 @@ void	ft_small_stack(t_stack **src, t_stack **dest)
 	if (is_sorted(*src))
 		return ;
 	ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
-	if ((*src)->capacity == 5)
-		ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
-	ft_very_small_stack(src);
+	if (!is_sorted(*src))
+	{
+		if ((*src)->capacity == 5)
+			ft_push(ft_get_code('p', (*dest)->num), *dest, *src);
+		ft_very_small_stack(src);
+	}
 	ft_sort_stack_before_receive(src, (*dest)->array[(*dest)->top]);
 	ft_push(ft_get_code('p', (*src)->num), *src, *dest);
-	if ((*src)->capacity == 5)
+	if (!is_empty(*dest))
 	{
 		ft_sort_stack_before_receive(src, (*dest)->array[(*dest)->top]);
 		ft_push(ft_get_code('p', (*src)->num), *src, *dest);

@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:39 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 22:31:56 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 09:36:50 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	if (ft_parser(ac, av, a, b) == ERROR)
 		return (ft_cleaner(a, b, "Error", ERROR));
 	if (ft_simplify_stack(a) == ERROR)
-		return (ERROR);
+		return (ft_cleaner(a, NULL, "Error", ERROR));
 	if ((*a)->capacity < 6)
 		ft_small_stack(a, b);
 	else if ((*a)->capacity >= 6)

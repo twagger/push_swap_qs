@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:59 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/09 21:55:48 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/13 09:41:28 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,6 @@ int	ft_cleaner(t_stack **a, t_stack **b, char *message, int code)
 	}
 	return (code);
 }
-
-/*
-** Est ce que la stack est triee entre deux valeurs ?
-** en desc si stack num == 0 / asc dans le cas inverse
-** ajouter et detailler le else
-*/
 
 int	is_sorted(t_stack *stack)
 {
