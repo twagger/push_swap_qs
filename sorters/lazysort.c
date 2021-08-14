@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 08:10:29 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 14:31:26 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 14:35:14 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 /*
-** Don't sort A, just try to benefit from it initial sort
+** Lazy because it don't sort A, it just try to benefit from it initial sort
 */
 
 int	ft_is_swap_good(t_board *board, t_stack *a)
