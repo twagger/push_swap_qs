@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 09:00:29 by twagner           #+#    #+#             */
-/*   Updated: 2021/07/26 11:14:04 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 09:26:27 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_ope_to_code(char *ope)
 	return (ERROR);
 }
 
-static void	ft_run_ope(int code, t_stack **a, t_stack **b)
+static void	ft_run_ope(int code, t_stack *a, t_stack *b)
 {
 	void	(*function)(const char *, t_stack *, t_stack *);
 
@@ -38,18 +38,18 @@ static void	ft_run_ope(int code, t_stack **a, t_stack **b)
 	else
 		function = &ft_rev_rotate;
 	if (code == 0 || code == 5 || code == 8)
-		function(NULL, *a, NULL);
+		function(NULL, a, NULL);
 	if (code == 1 || code == 6 || code == 9)
-		function(NULL, *b, NULL);
+		function(NULL, b, NULL);
 	if (code == 2 || code == 7 || code == 10)
-		function(NULL, *a, *b);
+		function(NULL, a, b);
 	if (code == 3)
-		function(NULL, *a, *b);
+		function(NULL, a, b);
 	if (code == 4)
-		function(NULL, *b, *a);
+		function(NULL, b, a);
 }
 
-static int	ft_is_opelist_ok(t_ope *opelist, t_stack **a, t_stack **b)
+static int	ft_is_opelist_ok(t_ope *opelist, t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -58,14 +58,14 @@ static int	ft_is_opelist_ok(t_ope *opelist, t_stack **a, t_stack **b)
 		ft_run_ope(opelist->code, a, b);
 		opelist = opelist->next;
 	}
-	if (!is_empty(*b))
+	if (!is_empty(b))
 		return (0);
-	if (!is_full(*a))
+	if (!is_full(a))
 		return (0);
 	i = -1;
-	while (++i < (*a)->capacity - 1)
+	while (++i < a->capacity - 1)
 	{
-		if ((*a)->array[i] < (*a)->array[i + 1])
+		if (a->array[i] < a->array[i + 1])
 			return (0);
 	}
 	return (1);
@@ -101,17 +101,17 @@ static int	ft_get_operations(t_ope **opelist)
 
 int	main(int ac, char **av)
 {
-	t_stack		**a;
-	t_stack		**b;
+	t_stack		*a;
+	t_stack		*b;
 	t_ope		*opelist;
 
-	a = (t_stack **)malloc(sizeof(**a));
+	a = (t_stack *)malloc(sizeof(*a));
 	if (!a)
 		return (ft_cleaner(NULL, NULL, "Error", ERROR));
-	b = (t_stack **)malloc(sizeof(**b));
+	b = (t_stack *)malloc(sizeof(*b));
 	if (!b)
 		return (ft_cleaner(a, NULL, "Error", ERROR));
-	if (ft_parser(ac, av, a, b) == ERROR)
+	if (ft_parser(ac, av, &a, &b) == ERROR)
 		return (ft_cleaner(a, b, "Error", ERROR));
 	opelist = NULL;
 	if (ft_get_operations(&opelist) == ERROR)

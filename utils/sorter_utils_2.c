@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:25:31 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 13:36:32 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 09:30:54 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_is_chunk_sorted(t_stack *stack, int min, int max)
 {
 	int	i;
 
-	if (stack->num == 0)
+	if (stack->num == 0 && stack->top > -1)
 	{
 		if (stack->array[stack->top] != min)
 			return (0);
@@ -29,7 +29,7 @@ int	ft_is_chunk_sorted(t_stack *stack, int min, int max)
 	}
 	else
 	{
-		if (stack->array[stack->top] != max)
+		if (stack->top > -1 && stack->array[stack->top] != max)
 			return (0);
 		i = -1;
 		while (max - ++i >= min)
@@ -41,20 +41,20 @@ int	ft_is_chunk_sorted(t_stack *stack, int min, int max)
 	return (1);
 }
 
-int	ft_simplify_stack(t_stack **stack)
+int	ft_simplify_stack(t_stack *stack)
 {
 	int	i;
 	int	size;
 	int	*sorted;
 
-	sorted = (int *)malloc(sizeof(*sorted) * (*stack)->capacity);
+	sorted = (int *)malloc(sizeof(*sorted) * stack->capacity);
 	if (!sorted)
 		return (ERROR);
-	ft_get_sorted_from_stack(**stack, &sorted);
+	ft_get_sorted_from_stack(stack, &sorted);
 	i = -1;
-	size = (*stack)->capacity;
+	size = stack->capacity;
 	while (++i < size)
-		(*stack)->array[i] = ft_get_index((*stack)->array[i], sorted, size);
+		stack->array[i] = ft_get_index(stack->array[i], sorted, size);
 	i = -1;
 	free(sorted);
 	return (0);

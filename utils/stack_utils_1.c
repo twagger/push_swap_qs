@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:59 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/13 09:41:28 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 08:17:13 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,12 @@ void	ft_reverse_stack(t_stack *stack)
 	}
 }
 
-int	ft_cleaner(t_stack **a, t_stack **b, char *message, int code)
+int	ft_cleaner(t_stack *a, t_stack *b, char *message, int code)
 {
 	if (a)
-	{
-		ft_free_stack(*a);
-		free(a);
-	}
+		ft_free_stack(a);
 	if (b)
-	{
-		ft_free_stack(*b);
-		free(b);
-	}
+		ft_free_stack(b);
 	if (message)
 	{
 		ft_putstr_fd(message, 2);

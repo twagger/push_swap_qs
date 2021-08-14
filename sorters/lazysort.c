@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertionsort.c                                    :+:      :+:    :+:   */
+/*   lazysort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/13 13:34:57 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 09:14:48 by twagner          ###   ########.fr       */
+/*   Created: 2021/08/14 08:10:29 by twagner           #+#    #+#             */
+/*   Updated: 2021/08/14 08:13:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-* To use only from B
+* Don't sort A, just try to benefit from it initial sort
 */
 
-void	ft_insertionsort(t_stack *src, t_stack *dest, int min, int max)
+void	ft_lazysort(t_stack *a, t_stack *b)
 {
-	while (max >= min)
-	{
-		ft_put_on_top(\
-			ft_get_index(max, src->array, src->top + 1), src);
-		ft_push("pa", dest, src);
-		--max;
-	}
+	(void)a;
+	(void)b;
 }
