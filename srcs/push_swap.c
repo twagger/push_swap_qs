@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 08:41:39 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 09:15:47 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 14:28:49 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,7 @@ int	main(int ac, char **av)
 		return (ft_cleaner(a, b, "Error", ERROR));
 	if (ft_simplify_stack(a) == ERROR)
 		return (ft_cleaner(a, NULL, "Error", ERROR));
-	/* 
-	int i;
-	i = a->top + 1;
-	while (--i >= 0)
-	{
-		ft_putnbr_fd(a->array[i], 2);
-		ft_putstr_fd(" ", 2);
-	}
-	ft_putstr_fd("\n", 2);
-	*/
-
-	ft_quicksort(a, b, 0, a->top);
-
-	/* 
-	i = a->top + 1;
-	while (--i >= 0)
-	{
-		ft_putnbr_fd(a->array[i], 2);
-		ft_putstr_fd(" ", 2);
-	}
-	ft_putstr_fd("\n", 2);
-	*/
-
+	if (ft_lazysort(a, b) == ERROR)
+		return (ft_cleaner(a, NULL, "Error", ERROR));
 	return (ft_cleaner(a, b, NULL, 0));
 }

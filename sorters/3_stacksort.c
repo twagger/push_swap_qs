@@ -6,14 +6,14 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:57:52 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 09:15:04 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 11:16:59 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-* To use only from A
+** To use only from A
 */
 
 void	ft_3_stacksort(t_stack *a)

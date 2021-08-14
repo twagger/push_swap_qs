@@ -6,14 +6,14 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:34:57 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 09:14:48 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 13:49:24 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-* To use only from B
+** To use only from B
 */
 
 void	ft_insertionsort(t_stack *src, t_stack *dest, int min, int max)
@@ -21,7 +21,7 @@ void	ft_insertionsort(t_stack *src, t_stack *dest, int min, int max)
 	while (max >= min)
 	{
 		ft_put_on_top(\
-			ft_get_index(max, src->array, src->top + 1), src);
+			ft_get_index(max, src->array, src->top + 1), src, 0);
 		ft_push("pa", dest, src);
 		--max;
 	}

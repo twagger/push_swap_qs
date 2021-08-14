@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:25:31 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 09:30:54 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 13:56:43 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,27 @@ int	ft_is_chunk_sorted(t_stack *stack, int min, int max)
 		}
 	}
 	return (1);
+}
+
+void	ft_get_sorted_from_stack(t_stack *a, int **sorted)
+{
+	int	i;
+	int	swap;
+
+	i = -1;
+	while (++i < a->capacity)
+		(*sorted)[i] = a->array[i];
+	i = -1;
+	while (++i < a->capacity - 1)
+	{
+		if ((*sorted)[i] > (*sorted)[i + 1])
+		{
+			swap = (*sorted)[i];
+			(*sorted)[i] = (*sorted)[i + 1];
+			(*sorted)[i + 1] = swap;
+			i = -1;
+		}
+	}
 }
 
 int	ft_simplify_stack(t_stack *stack)

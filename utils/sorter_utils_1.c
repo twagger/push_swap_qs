@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:08:44 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 08:25:54 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 14:19:32 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ char	*ft_get_code(char ope, int num)
 	return ("");
 }
 
-void	ft_put_on_top(int index, t_stack *stack)
+int	ft_put_on_top(int index, t_stack *stack, int blank)
 {
 	int	middle;
 	int	nb_rot;
 
 	if (index == stack->top)
-		return ;
+		return (0);
 	middle = (stack->top + 1) / 2;
 	nb_rot = stack->top - index;
 	if (index < middle)
 		nb_rot = index + 1;
+	if (blank)
+		return (nb_rot);
 	while (nb_rot--)
 	{
 		if (index < middle)
@@ -57,6 +59,7 @@ void	ft_put_on_top(int index, t_stack *stack)
 		else
 			ft_rotate(ft_get_code('r', stack->num), stack, NULL);
 	}
+	return (-1);
 }
 
 int	ft_get_index(int value, int *array, int size)
@@ -72,27 +75,6 @@ int	ft_get_index(int value, int *array, int size)
 	return (ERROR);
 }
 
-void	ft_get_sorted_from_stack(t_stack *a, int **sorted)
-{
-	int	i;
-	int	swap;
-
-	i = -1;
-	while (++i < a->capacity)
-		(*sorted)[i] = a->array[i];
-	i = -1;
-	while (++i < a->capacity - 1)
-	{
-		if ((*sorted)[i] > (*sorted)[i + 1])
-		{
-			swap = (*sorted)[i];
-			(*sorted)[i] = (*sorted)[i + 1];
-			(*sorted)[i + 1] = swap;
-			i = -1;
-		}
-	}
-}
-
 void	ft_split_chunk(t_stack *src, t_stack *dest, int min, int max)
 {
 	int	i;
@@ -105,7 +87,7 @@ void	ft_split_chunk(t_stack *src, t_stack *dest, int min, int max)
 		if ((src->array[i] < (min + max) / 2) != src->num \
 			&& src->array[i] <= max && src->array[i] >= min)
 		{
-			ft_put_on_top(i, src);
+			ft_put_on_top(i, src, REAL);
 			ft_push(ft_get_code('p', dest->num), dest, src);
 			j = -1;
 			i = src->top + 1;
@@ -113,10 +95,38 @@ void	ft_split_chunk(t_stack *src, t_stack *dest, int min, int max)
 		else if ((src->array[j] < (min + max) / 2) != src->num \
 			&& src->array[j] <= max && src->array[j] >= min)
 		{
-			ft_put_on_top(j, src);
+			ft_put_on_top(j, src, REAL);
 			ft_push(ft_get_code('p', dest->num), dest, src);
 			j = -1;
 			i = src->top + 1;
 		}
 	}
+}
+
+int	ft_sort_stack_before_receive(t_stack *stack, int value, int blank)
+{
+	int	i;
+	int	i_top;
+	int	min;
+	int	max;
+	int	closer;
+
+	i = -1;
+	min = INT_MAX;
+	max = -1;
+	closer = INT_MAX;
+	while (++i <= stack->top)
+	{
+		if (stack->array[i] > max)
+			max = stack->array[i];
+		if (stack->array[i] < min)
+			min = stack->array[i];
+		if (stack->array[i] > value && stack->array[i] < closer)
+			closer = stack->array[i];
+	}
+	if (value < min || value > max)
+		i_top = ft_get_index(min, stack->array, stack->top + 1);
+	else
+		i_top = ft_get_index(closer, stack->array, stack->top + 1);
+	return (ft_put_on_top(i_top, stack, blank));
 }

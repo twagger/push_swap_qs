@@ -6,12 +6,14 @@ SRCS			= srcs/push_swap.c \
 				  sorters/radixsort.c \
 				  sorters/insertionsort.c \
 				  sorters/dummysorts.c \
+				  sorters/lazysort.c \
 				  utils/parser_utils.c \
 			  	  utils/stack_utils_1.c \
 			  	  utils/stack_utils_2.c \
 				  utils/push_swap_utils.c \
 				  utils/sorter_utils_1.c \
-				  utils/sorter_utils_2.c
+				  utils/sorter_utils_2.c \
+				  utils/board_utils.c
 
 BSRCS			= srcs/checker.c \
 				  srcs/parser.c \
