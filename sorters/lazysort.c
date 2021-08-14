@@ -6,13 +6,12 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 08:10:29 by twagner           #+#    #+#             */
-/*   Updated: 2021/08/14 14:35:14 by twagner          ###   ########.fr       */
+/*   Updated: 2021/08/14 14:35:27 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <unistd.h>
+
 /*
 ** Lazy because it don't sort A, it just try to benefit from it initial sort
 */
